@@ -14,7 +14,11 @@ const port = process.env.PORT || 4000;
 
 // middlewares
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: "*",  // Change this to your frontend URL in production
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: "Content-Type, Authorization"
+}));
 
 // db connection
 connectDB()
